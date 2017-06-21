@@ -103,7 +103,7 @@ open class BaseDataSource<Element>: NSObject, UITableViewDataSource, UICollectio
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let object = lookUp(indexPath)
         let reuseID = reuseIDProvider.value(for: object)
-        return ContainerTableCell.cell(reuseID: reuseID, tableView: tableView, indexPath: indexPath, object: object, contentCreator: cellCreator)  // TODO: Handle mode.
+        return ContainerTableCell.cell(reuseID: reuseID, tableView: tableView, indexPath: indexPath, object: object, contentCreator: cellCreator)
     }
     
     // MARK: UICollectionViewDataSource
