@@ -37,7 +37,7 @@ import UIKit
 open class ChainableDataSource<Element>: BaseDataSource<Element> {
     open fileprivate(set) var dataSource: ChainableDataSource?
     
-    override public init(_ collection: [[Element]], reuseIDProvider: Provider<Element, String>, cellCreator: @escaping CellCreator) {
+    override public init(_ collection: [[Element]], reuseIDProvider: Provider<Element, String>? = nil, cellCreator: @escaping CellCreator) {
         super.init(collection, reuseIDProvider: reuseIDProvider, cellCreator: cellCreator)
     }
     

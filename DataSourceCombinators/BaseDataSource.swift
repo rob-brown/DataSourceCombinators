@@ -61,9 +61,9 @@ open class BaseDataSource<Element>: NSObject, UITableViewDataSource, UICollectio
     }
     fileprivate var updateClosures: [ChangeUpdater] = []
 
-    public init(_ collection: [[Element]], reuseIDProvider: Provider<Element, String>, cellCreator: @escaping CellCreator) {
+    public init(_ collection: [[Element]], reuseIDProvider: Provider<Element, String>? = nil, cellCreator: @escaping CellCreator) {
         self.collection = collection
-        self.reuseIDProvider = reuseIDProvider
+        self.reuseIDProvider = reuseIDProvider ?? .constant(UUID().uuidString)
         self.cellCreator = cellCreator
     }
     
