@@ -19,6 +19,7 @@
 		E198B5131EFB098300EDEB7A /* ContainerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198B5121EFB098300EDEB7A /* ContainerCollectionCell.swift */; };
 		E198B5151EFB0A0500EDEB7A /* ContainerCellMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198B5141EFB0A0500EDEB7A /* ContainerCellMode.swift */; };
 		E198B5171EFB0F9500EDEB7A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198B5161EFB0F9500EDEB7A /* UIViewExtensions.swift */; };
+		E1A945E51F15942100A2B126 /* DeletableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A945E41F15942100A2B126 /* DeletableDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		E198B5121EFB098300EDEB7A /* ContainerCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerCollectionCell.swift; sourceTree = "<group>"; };
 		E198B5141EFB0A0500EDEB7A /* ContainerCellMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerCellMode.swift; sourceTree = "<group>"; };
 		E198B5161EFB0F9500EDEB7A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		E1A945E41F15942100A2B126 /* DeletableDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeletableDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				E198B5061EFB011800EDEB7A /* FilterableDataSource.swift */,
 				E198B5071EFB011800EDEB7A /* IndexableDataSource.swift */,
 				E198B5081EFB011800EDEB7A /* ReorderableDataSource.swift */,
+				E1A945E41F15942100A2B126 /* DeletableDataSource.swift */,
 				E198B4ED1EFB00DA00EDEB7A /* DataSourceCombinators.h */,
 				E198B4EE1EFB00DA00EDEB7A /* Info.plist */,
 			);
@@ -235,6 +238,7 @@
 				E198B5111EFB097000EDEB7A /* ContainerTableCell.swift in Sources */,
 				E198B5171EFB0F9500EDEB7A /* UIViewExtensions.swift in Sources */,
 				E198B50D1EFB011800EDEB7A /* IndexableDataSource.swift in Sources */,
+				E1A945E51F15942100A2B126 /* DeletableDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +448,7 @@
 				E198B5001EFB00DA00EDEB7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E198B5011EFB00DA00EDEB7A /* Build configuration list for PBXNativeTarget "DataSourceCombinatorsTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +457,7 @@
 				E198B5031EFB00DA00EDEB7A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

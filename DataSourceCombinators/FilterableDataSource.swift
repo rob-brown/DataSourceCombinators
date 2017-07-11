@@ -59,7 +59,7 @@ open class FilterableDataSource<Element>: ChainableDataSource<Element> {
     open override func numberOfSections(in tableView: UITableView) -> Int {
         return collection.count
     }
-    
+
     open override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return collection[section].count
     }

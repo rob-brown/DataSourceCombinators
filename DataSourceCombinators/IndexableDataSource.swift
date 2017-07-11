@@ -48,12 +48,12 @@ open class IndexableDataSource<Element>: ChainableDataSource<Element> {
     }
     
     // MARK: UITableViewDataSource
-    
-    open override func sectionIndexTitlesForTableView(_ tableView: UITableView) -> [String]? {
+
+    open override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return UILocalizedIndexedCollation.current().sectionIndexTitles
     }
     
-    open override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+    open override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return UILocalizedIndexedCollation.current().section(forSectionIndexTitle: index)
     }
     

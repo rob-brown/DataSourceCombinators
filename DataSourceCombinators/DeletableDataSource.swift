@@ -34,31 +34,37 @@
 
 import UIKit
 
-open class ReorderableDataSource<Element>: ChainableDataSource<Element> {
-    
+open class DeletableDataSource<Element>: ChainableDataSource<Element> {
+
     public init(_ dataSource: ChainableDataSource<Element>) {
         super.init(dataSource: dataSource)
         dataSource.registerForChanges() {
             self.update()
         }
     }
-    
+
     // MARK: UITableViewDataSource
 
     open override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
-    open override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return true
+
+    open override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            tableView.beginUpdates()
+            _ = remove(indexPath)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+        case .insert, .none:
+            if let dataSource = dataSource {
+                dataSource.tableView(tableView, commit: editingStyle, forRowAt: indexPath)
+            }
+        }
     }
-    
-    open override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        move(from: sourceIndexPath, to: destinationIndexPath)
-    }
-    
+
     // MARK: Helpers
-    
+
     fileprivate func update() {
         collection = dataSource?.collection ?? collection
     }

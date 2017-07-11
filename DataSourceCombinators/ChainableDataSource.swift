@@ -48,30 +48,30 @@ open class ChainableDataSource<Element>: BaseDataSource<Element> {
     
     // MARK: Forwarded UITableViewDataSource
 
-    open func sectionIndexTitlesForTableView(_ tableView: UITableView) -> [String]? {
+    open func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         if let dataSource = dataSource {
-            return dataSource.sectionIndexTitlesForTableView(tableView)
+            return dataSource.sectionIndexTitles(for: tableView)
         }
-        
+
         return []
     }
 
-    open func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+    open func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         if let dataSource = dataSource {
-            return dataSource.tableView(tableView, sectionForSectionIndexTitle: title, atIndex: index)
+            return dataSource.tableView(tableView, sectionForSectionIndexTitle: title, at: index)
         }
-        
+
         return 0
     }
-    
+
     open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let dataSource = dataSource {
             return dataSource.tableView(tableView, titleForHeaderInSection: section)
         }
-        
+
         return nil
     }
-    
+
     open func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if let dataSource = dataSource {
             return dataSource.tableView(tableView, titleForFooterInSection: section)
@@ -79,32 +79,32 @@ open class ChainableDataSource<Element>: BaseDataSource<Element> {
         
         return nil
     }
-    
-    open func tableView(_ tableView: UITableView, canEditRowAtIndexPath indexPath: IndexPath) -> Bool {
+
+    open func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if let dataSource = dataSource {
-            return dataSource.tableView(tableView, canEditRowAtIndexPath: indexPath)
+            return dataSource.tableView(tableView, canEditRowAt: indexPath)
         }
-        
+
         return false
     }
-    
-    open func tableView(_ tableView: UITableView, canMoveRowAtIndexPath indexPath: IndexPath) -> Bool {
+
+    open func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         if let dataSource = dataSource {
-            return dataSource.tableView(tableView, canMoveRowAtIndexPath: indexPath)
+            return dataSource.tableView(tableView, canMoveRowAt: indexPath)
         }
-        
+
         return false
     }
-    
-    open func tableView(_ tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: IndexPath) {
+
+    open func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if let dataSource = dataSource {
-            dataSource.tableView(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
+            dataSource.tableView(tableView, commit: editingStyle, forRowAt: indexPath)
         }
     }
-    
-    open func tableView(_ tableView: UITableView, moveRowAtIndexPath sourceIndexPath: IndexPath, toIndexPath destinationIndexPath: IndexPath) {
+
+    open func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         if let dataSource = dataSource {
-            dataSource.tableView(tableView, moveRowAtIndexPath: sourceIndexPath, toIndexPath: destinationIndexPath)
+            dataSource.tableView(tableView, moveRowAt: sourceIndexPath, to: destinationIndexPath)
         }
     }
 }
