@@ -88,6 +88,7 @@ public final class ContainerCollectionCell<T>: UICollectionViewCell {
     private func apply(option: StyleOption) {
         switch option {
         case .backgroundColor(let color):
+            backgroundColor = color
             contentView.backgroundColor = color
         }
     }
