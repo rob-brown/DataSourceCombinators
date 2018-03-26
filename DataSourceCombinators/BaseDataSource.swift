@@ -50,9 +50,21 @@ public enum StyleOption {
     case backgroundColor(UIColor)
 }
 
+public struct CellContent {
+    public let view: UIView
+    public let mode: ContainerCellMode
+    public let style: [StyleOption]
+
+    public init(view: UIView, mode: ContainerCellMode = .fill, style: [StyleOption] = []) {
+        self.view = view
+        self.mode = mode
+        self.style = style
+    }
+}
+
 open class BaseDataSource<Element>: NSObject, UITableViewDataSource, UICollectionViewDataSource {
-    public typealias CellCreator = ((Element, UIView?) -> (UIView, ContainerCellMode, [StyleOption]))
-    public typealias SupplementCreator = ((String, UIView?) -> (UIView, ContainerCellMode, [StyleOption]))
+    public typealias CellCreator = ((Element, UIView?) -> CellContent)
+    public typealias SupplementCreator = ((String, UIView?) -> CellContent)
     public typealias ChangeUpdater = (()->())
     
     public let reuseIDProvider: Provider<Element, String>

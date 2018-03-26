@@ -36,8 +36,8 @@ import UIKit
 
 public final class ContainerTableCell<T>: UITableViewCell {
 
-    public typealias SimpleContentCreator = () -> (UIView, ContainerCellMode, [StyleOption])
-    public typealias ContentCreator = (T, UIView?) -> (UIView, ContainerCellMode, [StyleOption])
+    public typealias SimpleContentCreator = () -> CellContent
+    public typealias ContentCreator = (T, UIView?) -> CellContent
 
     private var object: T?
     private weak var view: UIView?
@@ -69,20 +69,20 @@ public final class ContainerTableCell<T>: UITableViewCell {
         let oldView = view
         oldView?.removeFromSuperview()
 
-        let (newView, mode, options) = contentCreator(object, oldView)
-        contentView.addSubview(newView)
+        let content = contentCreator(object, oldView)
+        contentView.addSubview(content.view)
 
-        switch mode {
+        switch content.mode {
         case .fill:
-            newView.pinToSuperview()
+            content.view.pinToSuperview()
         case .center:
-            newView.centerInSuperview()
+            content.view.centerInSuperview()
         case let .inset(insets):
-            newView.pinToSuperview(insets: insets)
+            content.view.pinToSuperview(insets: insets)
         }
 
-        view = newView
-        options.forEach(apply(option:))
+        view = content.view
+        content.style.forEach(apply(option:))
     }
 
     private func apply(option: StyleOption) {
