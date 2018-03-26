@@ -56,7 +56,7 @@ public final class ContainerCollectionCell<T>: UICollectionViewCell {
     }
 
     public class func cell(reuseID: String, collectionView: UICollectionView, indexPath: IndexPath, contentCreator: SimpleContentCreator) -> UICollectionViewCell {
-        return ContainerCollectionCell<Void>.cell(reuseID: reuseID, collectionView: collectionView, indexPath: indexPath, object: ()) { _ in
+        return ContainerCollectionCell<Void>.cell(reuseID: reuseID, collectionView: collectionView, indexPath: indexPath, object: ()) { _,_  in
             return contentCreator()
         }
     }

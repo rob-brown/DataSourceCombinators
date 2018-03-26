@@ -56,7 +56,7 @@ public final class ContainerTableCell<T>: UITableViewCell {
     }
 
     public class func cell(reuseID: String, tableView: UITableView, indexPath: IndexPath, contentCreator: SimpleContentCreator) -> UITableViewCell {
-        return ContainerTableCell<Void>.cell(reuseID: reuseID, tableView: tableView, indexPath: indexPath, object: ()) { _ in
+        return ContainerTableCell<Void>.cell(reuseID: reuseID, tableView: tableView, indexPath: indexPath, object: ()) { _,_  in
             return contentCreator()
         }
     }
