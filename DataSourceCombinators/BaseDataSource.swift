@@ -46,9 +46,13 @@ public enum Provider<Input, Output> {
     }
 }
 
+public enum StyleOption {
+    case backgroundColor(UIColor)
+}
+
 open class BaseDataSource<Element>: NSObject, UITableViewDataSource, UICollectionViewDataSource {
-    public typealias CellCreator = ((Element, UIView?) -> (UIView, ContainerCellMode))
-    public typealias SupplementCreator = ((String, UIView?) -> (UIView, ContainerCellMode))
+    public typealias CellCreator = ((Element, UIView?) -> (UIView, ContainerCellMode, [StyleOption]))
+    public typealias SupplementCreator = ((String, UIView?) -> (UIView, ContainerCellMode, [StyleOption]))
     public typealias ChangeUpdater = (()->())
     
     public let reuseIDProvider: Provider<Element, String>

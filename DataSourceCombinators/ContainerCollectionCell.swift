@@ -36,8 +36,8 @@ import UIKit
 
 public final class ContainerCollectionCell<T>: UICollectionViewCell {
 
-    public typealias SimpleContentCreator = () -> (UIView, ContainerCellMode)
-    public typealias ContentCreator = (T, UIView?) -> (UIView, ContainerCellMode)
+    public typealias SimpleContentCreator = () -> (UIView, ContainerCellMode, [StyleOption])
+    public typealias ContentCreator = (T, UIView?) -> (UIView, ContainerCellMode, [StyleOption])
 
     private var object: T?
     private weak var view: UIView?
@@ -69,7 +69,7 @@ public final class ContainerCollectionCell<T>: UICollectionViewCell {
         let oldView = view
         oldView?.removeFromSuperview()
 
-        let (newView, mode) = contentCreator(object, oldView)
+        let (newView, mode, options) = contentCreator(object, oldView)
         contentView.addSubview(newView)
 
         switch mode {
@@ -82,5 +82,13 @@ public final class ContainerCollectionCell<T>: UICollectionViewCell {
         }
 
         view = newView
+        options.forEach(apply(option:))
+    }
+
+    private func apply(option: StyleOption) {
+        switch option {
+        case .backgroundColor(let color):
+            contentView.backgroundColor = color
+        }
     }
 }
